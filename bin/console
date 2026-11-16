@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+/**
+ * MediStock Intelligence command-line entry point.
+ * Use XAMPP's PHP so the CLI matches the web server:  /opt/lampp/bin/php bin/console migrate
+ */
+declare(strict_types=1);
+
+if (PHP_SAPI !== 'cli') {
+    exit("CLI only.\n");
+}
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+App\Core\App::boot(dirname(__DIR__));
+exit((new App\Console\Console($argv))->run());

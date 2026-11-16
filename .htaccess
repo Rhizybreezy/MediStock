@@ -1,0 +1,16 @@
+# MediStock Intelligence - root access rules.
+# Recommended: point an Apache VirtualHost DocumentRoot at ./public instead.
+# This file is the fallback for the default XAMPP htdocs setup: it sends every
+# request into public/ and refuses direct access to code, config and storage.
+
+Options -Indexes
+<FilesMatch "^\.|\.(env|md|lock|json|xml|sql|log|ini|sh)$|^console$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|bin|config|database|docs|resources|routes|storage|tests|vendor)(/|$) - [F,L]
+    RewriteRule ^$ public/ [L]
+    RewriteRule ^((?!public/).*)$ public/$1 [L]
+</IfModule>

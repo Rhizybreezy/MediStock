@@ -1,0 +1,32 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Core;
+
+/**
+ * Loads every file in /config (each returns an array) and exposes values with
+ * dot notation: Config::get('database.host').
+ */
+final class Config
+{
+    private static array $items = [];
+
+    public static function load(string $directory): void
+    {
+        foreach (glob(rtrim($directory, '/') . '/*.php') as $file) {
+            self::$items[basename($file, '.php')] = require $file;
+        }
+    }
+
+    public static function get(string $key, mixed $default = null): mixed
+    {
+        $value = self::$items;
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($value) || !array_key_exists($segment, $value)) {
+                return $default;
+            }
+            $value = $value[$segment];
+        }
+        return $value;
+    }
+}

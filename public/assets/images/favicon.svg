@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MediStock Intelligence">
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#14b8a6"/>
+  <path d="M14 24 32 14l18 10v18L32 52 14 42Z" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M14 24l18 10 18-10M32 34v18" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linejoin="round" opacity=".55"/>
+  <path d="M29 22h6v4h4v6h-4v4h-6v-4h-4v-6h4z" fill="#ffffff"/>
+</svg>
